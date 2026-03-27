@@ -29,7 +29,7 @@
             string[] Lisuke = Enum.GetNames<Lisuke>();
             Console.WriteLine("Valitse Lisuke");
             for (int i = 0; i < Lisuke.Length; i++)
-            {
+                            {
                 Console.WriteLine(Lisuke[i]);
             }
 
