@@ -16,39 +16,24 @@
 
     internal class Nuolet
     {
-        private Perä_tyyppi perä;
-        private Kärki_tyyppi kärki;
-        private int pituus;
 
-        
+        public Kärki_tyyppi Kärki { get; set; }
+        public Perä_tyyppi Perä { get; set; }
+        public int Pituus { get; set; }
+
+      
         public Nuolet(Kärki_tyyppi kärki, Perä_tyyppi perä, int pituus)
         {
-            this.kärki = kärki;
-            this.perä = perä;
-            this.pituus = pituus;
-        }
-
-    
-        public Kärki_tyyppi GetKärki()
-        {
-            return kärki;
-        }
-
-        public Perä_tyyppi GetPerä()
-        {
-            return perä;
-        }
-
-        public int GetPituus()
-        {
-            return pituus;
+            Kärki = kärki;
+            Perä = perä;
+            Pituus = pituus;
         }
 
         public float PalautaHinta()
         {
-            float kärjenHinta = (int)kärki;
-            float peränHinta = (int)perä;
-            float varrenHinta = pituus * 0.05f;
+            float kärjenHinta = (int)Kärki;
+            float peränHinta = (int)Perä;
+            float varrenHinta = Pituus * 0.05f;
 
             return kärjenHinta + peränHinta + varrenHinta;
         }
