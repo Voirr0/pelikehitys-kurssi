@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Nuolia_kaupan
+﻿namespace Nuolia_kaupan
 {
-
     enum Kärki_tyyppi
     {
         puu = 3,
         teräs = 5,
         timantti = 50
-
     }
 
     enum Perä_tyyppi
@@ -22,14 +14,35 @@ namespace Nuolia_kaupan
         kotkansulka = 5
     }
 
-
-
-
     internal class Nuolet
     {
-        public Perä_tyyppi perä;
-        public Kärki_tyyppi kärki;
-        public int pituus;
+        private Perä_tyyppi perä;
+        private Kärki_tyyppi kärki;
+        private int pituus;
+
+        
+        public Nuolet(Kärki_tyyppi kärki, Perä_tyyppi perä, int pituus)
+        {
+            this.kärki = kärki;
+            this.perä = perä;
+            this.pituus = pituus;
+        }
+
+    
+        public Kärki_tyyppi GetKärki()
+        {
+            return kärki;
+        }
+
+        public Perä_tyyppi GetPerä()
+        {
+            return perä;
+        }
+
+        public int GetPituus()
+        {
+            return pituus;
+        }
 
         public float PalautaHinta()
         {

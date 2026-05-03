@@ -1,80 +1,69 @@
-﻿namespace Nuolia_kaupan
+﻿using System;
+
+namespace Nuolia_kaupan
 {
     internal class Program
     {
-
         static void Main(string[] args)
         {
-         Nuolet tilaus = new Nuolet();
-
-        string[] kärki_tyyppi = Enum.GetNames<Kärki_tyyppi>();
-            Console.WriteLine("Minkälainen käkri");
-            for (int i = 0; i < kärki_tyyppi.Length; i++)
+           
+            Console.WriteLine("Minkälainen kärki:");
+            string[] kärjet = Enum.GetNames<Kärki_tyyppi>();
+            for (int i = 0; i < kärjet.Length; i++)
             {
-                Console.WriteLine(kärki_tyyppi[i]);
+                Console.WriteLine(kärjet[i]);
             }
 
-            Console.WriteLine("-------------------------------------------------");
-            string vastaus = Console.ReadLine();
-            Kärki_tyyppi valintaout;
-
-            if (Enum.TryParse<Kärki_tyyppi>(vastaus, out valintaout))
+            Kärki_tyyppi valittuKärki;
+            while (true)
             {
-                tilaus.kärki = valintaout;  
+                Console.WriteLine("-----------------------------------");
+                string syöte = Console.ReadLine();
+
+                if (Enum.TryParse(syöte, true, out valittuKärki))
+                    break;
+
+                Console.WriteLine("Virheellinen valinta, yritä uudestaan.");
             }
 
-            string[] perä_tyyppi = Enum.GetNames<Perä_tyyppi>();
-            Console.WriteLine("Minkälainen perä");
-            for (int i = 0; i < perä_tyyppi.Length; i++)
+            
+            Console.WriteLine("Minkälainen perä:");
+            string[] perät = Enum.GetNames<Perä_tyyppi>();
+            for (int i = 0; i < perät.Length; i++)
             {
-                Console.WriteLine(perä_tyyppi[i]);
+                Console.WriteLine(perät[i]);
             }
 
-            Console.WriteLine("-------------------------------------------------");
-            string vastaus1 = Console.ReadLine();
-            Perä_tyyppi valintaout1;
-
-            if (Enum.TryParse<Perä_tyyppi>(vastaus1, out valintaout1))
+            Perä_tyyppi valittuPerä;
+            while (true)
             {
-                tilaus.perä = valintaout1;
+                Console.WriteLine("-----------------------------------");
+                string syöte = Console.ReadLine();
+
+                if (Enum.TryParse(syöte, true, out valittuPerä))
+                    break;
+
+                Console.WriteLine("Virheellinen valinta, yritä uudestaan.");
             }
 
-
-
-            Console.WriteLine("Kuinka pitkä nuoli");
-
-            string vastaus3 = Console.ReadLine();
-
-            int valintaout3;
-
-
-            if (Int32.TryParse(vastaus3, out valintaout3))
+            
+            int pituus;
+            while (true)
             {
-                if (valintaout3 >= 60 && valintaout3 <= 100)
-                {
-                    tilaus.pituus = valintaout3;
-                }
+                Console.WriteLine("Kuinka pitkä nuoli (60-100):");
+                string syöte = Console.ReadLine();
 
-                else
-                {
-                    Console.WriteLine("Valitse 60-100 väliltä");
-                }
+                if (int.TryParse(syöte, out pituus) && pituus >= 60 && pituus <= 100)
+                    break;
+
+                Console.WriteLine("Anna luku väliltä 60–100.");
             }
 
-            else
-            {
-                Console.WriteLine("Vastauksen pitää olla luku");
-            }
+           
+            Nuolet tilaus = new Nuolet(valittuKärki, valittuPerä, pituus);
 
-
-
+          
             Console.WriteLine($"Tämän nuolen hinta on {tilaus.PalautaHinta()} kultarahaa.");
-
-
-
-
-
-
         }
     }
 }
