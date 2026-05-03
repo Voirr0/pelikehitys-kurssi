@@ -8,6 +8,8 @@ namespace SeikkailijanReppu
         {
             Reppu reppu = new Reppu(10, 15f, 20f);
 
+            Console.WriteLine(reppu.ToString());
+
             while (true)
             {
                 Console.WriteLine("\nValitse lisättävä tavara:");

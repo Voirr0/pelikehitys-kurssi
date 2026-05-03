@@ -31,5 +31,15 @@ namespace SeikkailijanReppu
             tavarat.Add(tavara);
             return true;
         }
+
+
+        public override string ToString()
+        {
+            if (tavarat.Count == 0)
+                return "Reppu on tyhjä";
+
+            string sisältö = string.Join(", ", tavarat);
+            return $"Repussa on seuraavat tavarat: {sisältö}";
+        }
     }
 }
